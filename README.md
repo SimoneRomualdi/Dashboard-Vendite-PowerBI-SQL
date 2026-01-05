@@ -2,7 +2,7 @@
 
 Dashboard interattiva per l'analisi delle vendite globali realizzata con Power BI e PostgreSQL. Il progetto analizza oltre 3.000 transazioni provenienti da 6 paesi con visualizzazioni geografiche, trend temporali e metriche di performance.
 
-![Dashboard Preview](dashboard_screenshot.png)
+![Dashboard Preview](Dashboard_Screenshot.png)
 
 ## 🎯 Obiettivi del Progetto
 
