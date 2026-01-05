@@ -25,7 +25,6 @@ Creare una soluzione completa di Business Intelligence che permetta di:
 - **Database**: PostgreSQL
 - **Visualizzazione**: Power BI Desktop
 - **Linguaggi**: SQL, DAX
-- **ETL**: Script SQL personalizzati
 
 ## 📁 Struttura del Progetto
 ```
@@ -35,6 +34,8 @@ Creare una soluzione completa di Business Intelligence che permetta di:
 │   ├── 02_creazione_tabella_unica.sql # Consolidamento dati
 │   ├── 03_data_cleaning.sql          # Pulizia e trasformazione
 │   └── 04_business_insights.sql      # Query di analisi
+├── Dashboard_Vendite.pbix            # File Power BI Dashboard
+├── dashboard_preview.png             # Screenshot dashboard
 ├── Formule_DAX.md                    # Documentazione misure DAX
 └── README.md                         # Questo file
 ```
@@ -61,8 +62,7 @@ Creare una soluzione completa di Business Intelligence che permetta di:
 
 ## 💡 Competenze Dimostrate
 
-- **Data Engineering**: Progettazione database, ETL, data cleaning
-- **SQL Avanzato**: Query complesse, aggregazioni, window functions
+- **SQL**: Query complesse, aggregazioni, window functions
 - **Business Intelligence**: Creazione dashboard, storytelling con i dati
 - **Data Analysis**: Identificazione insight e pattern nei dati
 - **DAX**: Creazione misure calcolate per analisi avanzate
