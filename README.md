@@ -1,44 +1,50 @@
-# Dashboard Vendite Globali — Power BI & PostgreSQL
+# Power BI & SQL Sales Dashboard — Analisi Vendite Globali
 
-Sei paesi, 3.000+ transazioni, un unico problema: capire dove sta andando il business e perché. Questo progetto costruisce una dashboard interattiva che trasforma dati di vendita grezzi in una visione chiara delle performance globali, con SQL per la preparazione e Power BI per la narrazione visiva.
+## Executive Summary
 
----
-
-## Il Contesto
-
-I dati arrivavano in sei file separati — uno per paese (Canada, Cina, India, Nigeria, UK, US) — con struttura identica ma caricati e gestiti in isolamento. Nessuna visione aggregata, nessun confronto cross-country, nessun KPI calcolato in modo coerente.
-
----
-
-## Dal Dato Grezzo all'Insight
-
-### Preparazione in SQL
-
-Prima di costruire qualsiasi visualizzazione, i sei dataset vengono unificati e puliti in PostgreSQL:
-
-- **Consolidamento** → Le sei tabelle vengono unite con `UNION ALL` in un'unica `dati_vendite`
-- **Qualità dati** → Rilevati e corretti due record con valori mancanti: una quantità nulla aggiornata manualmente, un prezzo mancante imputato con la media del prodotto nella stessa categoria
-- **Colonne derivate** → `quantita_totale` (prezzo × quantità − sconto) e `profitto` (ricavo − costo) calcolate e aggiunte come colonne persistenti
-
-### La Dashboard
-
-**4,14M € di vendite totali** analizzate lungo quattro dimensioni:
-
-*Dove* → Mappa interattiva con distribuzione geografica delle vendite per paese e città
-
-*Cosa* → Top 5 prodotti per fatturato, breakdown per categoria
-
-*Chi* → Top 5 rappresentanti di vendita, performance per località negozio
-
-*Quando* → Trend mensile delle vendite con filtro per periodo
-
-I KPI principali — fatturato totale, profitto, ordini e valore medio ordine — sono visibili in header e aggiornati dinamicamente dai filtri.
+- **Business Problem**: I dati di vendita di 6 paesi arrivavano in file separati senza visione aggregata, rendendo impossibile confrontare performance cross-country o calcolare KPI coerenti.
+- **Soluzione**: Consolidamento e pulizia in PostgreSQL + dashboard interattiva in Power BI con filtri dinamici per paese, categoria e periodo.
+- **Risultati**: 4,14M € di vendite totali analizzate; 959K € di profitto; identificati top performer per prodotto, rappresentante e località negozio.
+- **Prossimi Passi**: Aggiungere analisi YoY per confronto con anno precedente; integrare dati di budget per calcolare scostamento target vs actual.
 
 ---
 
-## Una Scoperta Interessante
+## Business Problem
 
-La correlazione tra sconto applicato e profitto per negozio, visualizzata nello scatter plot, mostra pattern non lineari: alcuni negozi con sconti elevati mantengono margini alti, altri con sconti bassi underperformano. Questo apre domande sul mix di prodotto e sul tipo di clientela — che richiederebbero dati aggiuntivi per essere investigate.
+Sei mercati (Canada, Cina, India, Nigeria, UK, US), sei file separati, nessuna visione d'insieme. Senza un dataset unificato era impossibile rispondere a domande fondamentali: *"Quale paese genera più profitto?"*, *"Chi sono i rappresentanti più performanti?"*, *"Come si distribuiscono le vendite per categoria?"*.
+
+---
+
+## Metodologia
+
+1. **Consolidamento (SQL)** → Le sei tabelle vengono unite con `UNION ALL` in un'unica `dati_vendite`.
+2. **Data Quality (SQL)** → Rilevati e corretti due record con valori mancanti: una quantità nulla aggiornata manualmente, un prezzo imputato con la media del prodotto nella stessa categoria.
+3. **Metriche derivate (SQL)** → `quantita_totale` (prezzo × quantità − sconto) e `profitto` (ricavo − costo) calcolate e aggiunte come colonne persistenti.
+4. **Dashboard (Power BI)** → Visualizzazione KPI, mappa geografica, trend mensile, top performer per prodotto e rappresentante, correlazione sconto-profitto.
+
+---
+
+## Competenze
+
+- **SQL**: `UNION ALL`, `UPDATE` con subquery, aggregazioni, colonne derivate calcolate
+- **Power BI**: Mappa interattiva, filtri dinamici, scatter plot, KPI cards, grafici a barre e torta
+- **DAX**: Misure aggregate per KPI principali
+
+---
+
+## Risultati & Raccomandazioni
+
+- **KPI Principali**: Vendite totali 4,14M € · Profitto totale 959K € · 3.000+ ordini · Valore medio ordine 1,38K €
+- **Correlazione sconto-profitto**: Lo scatter plot evidenzia pattern non lineari — alcuni negozi con sconti elevati mantengono margini alti, altri con sconti bassi underperformano. **Raccomandazione**: analizzare il mix di prodotto per negozio prima di applicare politiche di sconto uniformi.
+- **Top performer**: I 5 prodotti e i 5 rappresentanti con fatturato più alto sono identificati e monitorabili dinamicamente per qualsiasi periodo selezionato.
+
+---
+
+## Prossimi Passi
+
+1. Aggiungere confronto Year-over-Year per misurare crescita rispetto all'anno precedente.
+2. Integrare dati di budget per calcolare scostamento target vs actual per paese e categoria.
+3. Costruire alert automatici per rappresentanti sotto soglia di performance.
 
 ---
 
@@ -63,11 +69,4 @@ La correlazione tra sconto applicato e profitto per negozio, visualizzata nello 
 └── README.md
 ```
 
----
-
-## Stack Tecnologico
-
-- **PostgreSQL** — Consolidamento, pulizia e calcolo metriche
-- **SQL** — ETL e query analitiche
-- **Power BI** — Dashboard interattiva con filtri dinamici
-- **DAX** — KPI cards e misure aggregate
+**Stack**: PostgreSQL · SQL · Power BI · DAX
